@@ -1,3 +1,8 @@
+# Varnish Config for WordPress
+# Martin Wolfert - 2015/05/15
+# http://blog.lichttraeumer.de
+# Version 1.0
+
 # Marker to tell the VCL compiler that this VCL has been adapted to the
 # new 4.0 format.
 vcl 4.0;
