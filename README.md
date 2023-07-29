@@ -1,2 +1,2 @@
-# wordpress-optimizing
-Nginx, Varnish and other stuff to improve WordPress performance
+# Optimizing WordPress ...
+ .. regarding CO2 emissions, Nginx, Varnish and other stuff to improve WordPress
