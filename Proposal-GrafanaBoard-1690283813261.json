@@ -1,0 +1,3166 @@
+{
+  "annotations": {
+    "list": [
+      {
+        "datasource": {
+          "type": "influxdb",
+          "uid": "d710f057-8007-4a14-8372-a4f1f7c35f89"
+        },
+        "enable": false,
+        "iconColor": "rgba(255, 96, 96, 1)",
+        "limit": 100,
+        "name": "runs",
+        "query": "select title, text, tags from events where $timeFilter AND \"tags\" =~ /$group/ AND \"tags\"  =~ /$page/ AND \"tags\" =~ /$browser/ AND \"tags\" =~  /$connectivity/ AND \"tags\" =~  /$category/",
+        "tagsColumn": "tags",
+        "target": {
+          "fromAnnotations": true,
+          "name": "runs",
+          "query": "select title, text, tags from events where $timeFilter AND \"tags\" =~ /$group/ AND \"tags\"  =~ /$page/ AND \"tags\" =~ /$browser/ AND \"tags\" =~  /$connectivity/ AND \"tags\" =~  /$category/",
+          "queryType": "tags",
+          "tagsColumn": "tags",
+          "textColumn": "text",
+          "timeEndColumn": "",
+          "titleColumn": "title"
+        },
+        "textColumn": "text",
+        "titleColumn": "title",
+        "type": "alert"
+      },
+      {
+        "builtIn": 1,
+        "datasource": {
+          "type": "graphite",
+          "uid": "8bXgkuY4z"
+        },
+        "enable": false,
+        "hide": false,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "target": {
+          "limit": 100,
+          "matchAny": false,
+          "tags": [],
+          "type": "dashboard"
+        },
+        "type": "dashboard"
+      }
+    ]
+  },
+  "description": "Proposal GrafanaBoard",
+  "editable": true,
+  "fiscalYearStartMonth": 0,
+  "gnetId": 13252,
+  "graphTooltip": 0,
+  "id": 6,
+  "links": [],
+  "liveNow": false,
+  "panels": [
+    {
+      "collapsed": false,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 0
+      },
+      "id": 91,
+      "panels": [],
+      "title": "Sustainability",
+      "type": "row"
+    },
+    {
+      "datasource": {
+        "type": "influxdb",
+        "uid": "d710f057-8007-4a14-8372-a4f1f7c35f89"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 32,
+            "gradientMode": "opacity",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 2,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "never",
+            "spanNulls": true,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "decimals": 0,
+          "links": [
+            {
+              "title": "HTML Output",
+              "url": ""
+            }
+          ],
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "massg"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 6,
+        "w": 12,
+        "x": 0,
+        "y": 1
+      },
+      "id": 95,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "d710f057-8007-4a14-8372-a4f1f7c35f89"
+          },
+          "groupBy": [],
+          "measurement": "totalCO2",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "A",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "p90"
+                ],
+                "type": "field"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "category",
+              "operator": "=~",
+              "value": "/^$category$/"
+            },
+            {
+              "condition": "AND",
+              "key": "group",
+              "operator": "=~",
+              "value": "/^$group$/"
+            },
+            {
+              "condition": "AND",
+              "key": "page",
+              "operator": "=~",
+              "value": "/^$page$/"
+            },
+            {
+              "condition": "AND",
+              "key": "browser",
+              "operator": "=~",
+              "value": "/^$browser$/"
+            },
+            {
+              "condition": "AND",
+              "key": "connectivity",
+              "operator": "=~",
+              "value": "/^$connectivity$/"
+            }
+          ]
+        }
+      ],
+      "title": "Total CO2 based on estimated daily views",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "influxdb",
+        "uid": "d710f057-8007-4a14-8372-a4f1f7c35f89"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 85,
+            "gradientMode": "opacity",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 2,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "decimals": 1,
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "massg"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 6,
+        "w": 12,
+        "x": 12,
+        "y": 1
+      },
+      "id": 97,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "d710f057-8007-4a14-8372-a4f1f7c35f89"
+          },
+          "groupBy": [],
+          "measurement": "co2PerPageView",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "A",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "p90"
+                ],
+                "type": "field"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "category",
+              "operator": "=~",
+              "value": "/^$category$/"
+            },
+            {
+              "condition": "AND",
+              "key": "group",
+              "operator": "=~",
+              "value": "/^$group$/"
+            },
+            {
+              "condition": "AND",
+              "key": "browser",
+              "operator": "=~",
+              "value": "/^$browser$/"
+            },
+            {
+              "condition": "AND",
+              "key": "connectivity",
+              "operator": "=~",
+              "value": "/^$connectivity$/"
+            },
+            {
+              "condition": "AND",
+              "key": "page",
+              "operator": "=~",
+              "value": "/^$page$/"
+            }
+          ]
+        }
+      ],
+      "title": "CO2 per Page View",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "influxdb",
+        "uid": "d710f057-8007-4a14-8372-a4f1f7c35f89"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "massg"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 3,
+        "w": 12,
+        "x": 0,
+        "y": 7
+      },
+      "id": 89,
+      "links": [
+        {
+          "targetBlank": true,
+          "title": "",
+          "url": ""
+        }
+      ],
+      "options": {
+        "colorMode": "value",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "textMode": "auto"
+      },
+      "pluginVersion": "10.0.2",
+      "targets": [
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "d710f057-8007-4a14-8372-a4f1f7c35f89"
+          },
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "null"
+              ],
+              "type": "fill"
+            }
+          ],
+          "measurement": "totalCO2",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "A",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "max"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "last"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "group",
+              "operator": "=~",
+              "value": "/^$group$/"
+            },
+            {
+              "condition": "AND",
+              "key": "browser",
+              "operator": "=~",
+              "value": "/^$browser$/"
+            },
+            {
+              "condition": "AND",
+              "key": "page",
+              "operator": "=~",
+              "value": "/^$page$/"
+            },
+            {
+              "condition": "AND",
+              "key": "category",
+              "operator": "=~",
+              "value": "/^$category$/"
+            },
+            {
+              "condition": "AND",
+              "key": "origin",
+              "operator": "=",
+              "value": "sustainable"
+            }
+          ]
+        }
+      ],
+      "title": "Total CO2 based on estimated daily views",
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "influxdb",
+        "uid": "d710f057-8007-4a14-8372-a4f1f7c35f89"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "massg"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 3,
+        "w": 12,
+        "x": 12,
+        "y": 7
+      },
+      "id": 93,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "none",
+        "justifyMode": "center",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "text": {},
+        "textMode": "auto"
+      },
+      "pluginVersion": "10.0.2",
+      "targets": [
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "d710f057-8007-4a14-8372-a4f1f7c35f89"
+          },
+          "groupBy": [],
+          "measurement": "co2PerPageView",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "query": "SELECT last(\"value\") FROM \"co2PerPageView\" WHERE (\"group\" =~ /^$group$/ AND \"browser\" =~ /^$browser$/ AND \"page\" =~ /^$page$/ AND \"category\" =~ /^$category$/ AND \"connectivity\" =~ /^$connectivity$/ AND \"origin\" = 'sustainable') AND $timeFilter GROUP BY time($__interval) fill(null)",
+          "rawQuery": false,
+          "refId": "A",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "max"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "last"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "group",
+              "operator": "=~",
+              "value": "/^$group$/"
+            },
+            {
+              "condition": "AND",
+              "key": "browser",
+              "operator": "=~",
+              "value": "/^$browser$/"
+            },
+            {
+              "condition": "AND",
+              "key": "page",
+              "operator": "=~",
+              "value": "/^$page$/"
+            },
+            {
+              "condition": "AND",
+              "key": "category",
+              "operator": "=~",
+              "value": "/^$category$/"
+            },
+            {
+              "condition": "AND",
+              "key": "connectivity",
+              "operator": "=~",
+              "value": "/^$connectivity$/"
+            },
+            {
+              "condition": "AND",
+              "key": "origin",
+              "operator": "=",
+              "value": "sustainable"
+            }
+          ]
+        }
+      ],
+      "title": "CO2 per Page View",
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "influxdb",
+        "uid": "d710f057-8007-4a14-8372-a4f1f7c35f89"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "massg"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 3,
+        "w": 12,
+        "x": 0,
+        "y": 10
+      },
+      "id": 99,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "textMode": "auto"
+      },
+      "pluginVersion": "10.0.2",
+      "targets": [
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "d710f057-8007-4a14-8372-a4f1f7c35f89"
+          },
+          "groupBy": [],
+          "measurement": "co2FirstParty",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "A",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "max"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "last"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "category",
+              "operator": "=~",
+              "value": "/^$category$/"
+            },
+            {
+              "condition": "AND",
+              "key": "browser",
+              "operator": "=~",
+              "value": "/^$browser$/"
+            },
+            {
+              "condition": "AND",
+              "key": "connectivity",
+              "operator": "=~",
+              "value": "/^$connectivity$/"
+            },
+            {
+              "condition": "AND",
+              "key": "group",
+              "operator": "=~",
+              "value": "/^$group$/"
+            },
+            {
+              "condition": "AND",
+              "key": "origin",
+              "operator": "=",
+              "value": "sustainable"
+            }
+          ]
+        }
+      ],
+      "title": "CO2 First Party",
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "influxdb",
+        "uid": "d710f057-8007-4a14-8372-a4f1f7c35f89"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "massg"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 3,
+        "w": 12,
+        "x": 12,
+        "y": 10
+      },
+      "id": 101,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "textMode": "auto"
+      },
+      "pluginVersion": "10.0.2",
+      "targets": [
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "d710f057-8007-4a14-8372-a4f1f7c35f89"
+          },
+          "groupBy": [],
+          "measurement": "co2ThirdParty",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "A",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "max"
+                ],
+                "type": "field"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "category",
+              "operator": "=~",
+              "value": "/^$category$/"
+            },
+            {
+              "condition": "AND",
+              "key": "browser",
+              "operator": "=~",
+              "value": "/^$browser$/"
+            },
+            {
+              "condition": "AND",
+              "key": "connectivity",
+              "operator": "=~",
+              "value": "/^$connectivity$/"
+            },
+            {
+              "condition": "AND",
+              "key": "group",
+              "operator": "=~",
+              "value": "/^$group$/"
+            }
+          ]
+        }
+      ],
+      "title": "CO2 Third Party",
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "influxdb",
+        "uid": "d710f057-8007-4a14-8372-a4f1f7c35f89"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            }
+          },
+          "mappings": [],
+          "unit": "decbytes"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 0,
+        "y": 13
+      },
+      "id": 106,
+      "options": {
+        "displayLabels": [
+          "percent",
+          "name"
+        ],
+        "legend": {
+          "displayMode": "table",
+          "placement": "right",
+          "showLegend": true,
+          "values": [
+            "value"
+          ]
+        },
+        "pieType": "donut",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "targets": [
+        {
+          "alias": "CSS",
+          "datasource": {
+            "type": "influxdb",
+            "uid": "d710f057-8007-4a14-8372-a4f1f7c35f89"
+          },
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "null"
+              ],
+              "type": "fill"
+            }
+          ],
+          "measurement": "contentSize",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "query": "SELECT mean(\"value\") FROM \"default\".\"contentSize\" WHERE (\"category\" =~ /^$category$/ AND \"group\" =~ /^$group$/ AND \"page\" =~ /^$page$/ AND \"browser\" =~ /^$browser$/ AND \"connectivity\" =~ /^$connectivity$/ AND \"contentType\" = 'css' AND \"party\" = 'thirdParty') AND $timeFilter GROUP BY time($__interval) fill(null)",
+          "rawQuery": false,
+          "refId": "A",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "category",
+              "operator": "=~",
+              "value": "/^$category$/"
+            },
+            {
+              "condition": "AND",
+              "key": "group",
+              "operator": "=~",
+              "value": "/^$group$/"
+            },
+            {
+              "condition": "AND",
+              "key": "page",
+              "operator": "=~",
+              "value": "/^$page$/"
+            },
+            {
+              "condition": "AND",
+              "key": "browser",
+              "operator": "=~",
+              "value": "/^$browser$/"
+            },
+            {
+              "condition": "AND",
+              "key": "connectivity",
+              "operator": "=~",
+              "value": "/^$connectivity$/"
+            },
+            {
+              "condition": "AND",
+              "key": "party",
+              "operator": "=",
+              "value": "firstParty"
+            }
+          ]
+        },
+        {
+          "alias": "Fonts",
+          "datasource": {
+            "type": "influxdb",
+            "uid": "d710f057-8007-4a14-8372-a4f1f7c35f89"
+          },
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "null"
+              ],
+              "type": "fill"
+            }
+          ],
+          "hide": false,
+          "measurement": "contentSize",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "query": "SELECT mean(\"value\") FROM \"default\".\"contentSize\" WHERE (\"category\" =~ /^$category$/ AND \"group\" =~ /^$group$/ AND \"page\" =~ /^$page$/ AND \"browser\" =~ /^$browser$/ AND \"connectivity\" =~ /^$connectivity$/ AND \"contentType\" = 'font' AND \"party\" = 'thirdParty') AND $timeFilter GROUP BY time($__interval) fill(null)",
+          "rawQuery": false,
+          "refId": "B",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "category",
+              "operator": "=~",
+              "value": "/^$category$/"
+            },
+            {
+              "condition": "AND",
+              "key": "group",
+              "operator": "=~",
+              "value": "/^$group$/"
+            },
+            {
+              "condition": "AND",
+              "key": "page",
+              "operator": "=~",
+              "value": "/^$page$/"
+            },
+            {
+              "condition": "AND",
+              "key": "browser",
+              "operator": "=~",
+              "value": "/^$browser$/"
+            },
+            {
+              "condition": "AND",
+              "key": "connectivity",
+              "operator": "=~",
+              "value": "/^$connectivity$/"
+            },
+            {
+              "condition": "AND",
+              "key": "contentType",
+              "operator": "=",
+              "value": "font"
+            },
+            {
+              "condition": "AND",
+              "key": "party",
+              "operator": "=",
+              "value": "firstParty"
+            }
+          ]
+        },
+        {
+          "alias": "HTML",
+          "datasource": {
+            "type": "influxdb",
+            "uid": "d710f057-8007-4a14-8372-a4f1f7c35f89"
+          },
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "null"
+              ],
+              "type": "fill"
+            }
+          ],
+          "hide": false,
+          "measurement": "contentSize",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "C",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "category",
+              "operator": "=~",
+              "value": "/^$category$/"
+            },
+            {
+              "condition": "AND",
+              "key": "group",
+              "operator": "=~",
+              "value": "/^$group$/"
+            },
+            {
+              "condition": "AND",
+              "key": "page",
+              "operator": "=~",
+              "value": "/^$page$/"
+            },
+            {
+              "condition": "AND",
+              "key": "browser",
+              "operator": "=~",
+              "value": "/^$browser$/"
+            },
+            {
+              "condition": "AND",
+              "key": "connectivity",
+              "operator": "=~",
+              "value": "/^$connectivity$/"
+            },
+            {
+              "condition": "AND",
+              "key": "contentType",
+              "operator": "=",
+              "value": "html"
+            },
+            {
+              "condition": "AND",
+              "key": "party",
+              "operator": "=",
+              "value": "firstParty"
+            }
+          ]
+        },
+        {
+          "alias": "Java Script ",
+          "datasource": {
+            "type": "influxdb",
+            "uid": "d710f057-8007-4a14-8372-a4f1f7c35f89"
+          },
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "null"
+              ],
+              "type": "fill"
+            }
+          ],
+          "hide": false,
+          "measurement": "contentSize",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "D",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "category",
+              "operator": "=~",
+              "value": "/^$category$/"
+            },
+            {
+              "condition": "AND",
+              "key": "group",
+              "operator": "=~",
+              "value": "/^$group$/"
+            },
+            {
+              "condition": "AND",
+              "key": "page",
+              "operator": "=~",
+              "value": "/^$page$/"
+            },
+            {
+              "condition": "AND",
+              "key": "browser",
+              "operator": "=~",
+              "value": "/^$browser$/"
+            },
+            {
+              "condition": "AND",
+              "key": "connectivity",
+              "operator": "=~",
+              "value": "/^$connectivity$/"
+            },
+            {
+              "condition": "AND",
+              "key": "contentType",
+              "operator": "=",
+              "value": "javascript"
+            },
+            {
+              "condition": "AND",
+              "key": "party",
+              "operator": "=",
+              "value": "firstParty"
+            }
+          ]
+        },
+        {
+          "alias": "Images",
+          "datasource": {
+            "type": "influxdb",
+            "uid": "d710f057-8007-4a14-8372-a4f1f7c35f89"
+          },
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "null"
+              ],
+              "type": "fill"
+            }
+          ],
+          "hide": false,
+          "measurement": "contentSize",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "E",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "category",
+              "operator": "=~",
+              "value": "/^$category$/"
+            },
+            {
+              "condition": "AND",
+              "key": "group",
+              "operator": "=~",
+              "value": "/^$group$/"
+            },
+            {
+              "condition": "AND",
+              "key": "page",
+              "operator": "=~",
+              "value": "/^$page$/"
+            },
+            {
+              "condition": "AND",
+              "key": "browser",
+              "operator": "=~",
+              "value": "/^$browser$/"
+            },
+            {
+              "condition": "AND",
+              "key": "connectivity",
+              "operator": "=~",
+              "value": "/^$connectivity$/"
+            },
+            {
+              "condition": "AND",
+              "key": "contentType",
+              "operator": "=",
+              "value": "image"
+            },
+            {
+              "condition": "AND",
+              "key": "party",
+              "operator": "=",
+              "value": "firstParty"
+            }
+          ]
+        }
+      ],
+      "title": "Content Sizes First Party",
+      "type": "piechart"
+    },
+    {
+      "datasource": {
+        "type": "influxdb",
+        "uid": "d710f057-8007-4a14-8372-a4f1f7c35f89"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            }
+          },
+          "mappings": [],
+          "unit": "decbytes"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 12,
+        "y": 13
+      },
+      "id": 105,
+      "options": {
+        "displayLabels": [
+          "percent",
+          "name"
+        ],
+        "legend": {
+          "displayMode": "table",
+          "placement": "right",
+          "showLegend": true,
+          "values": [
+            "value"
+          ]
+        },
+        "pieType": "donut",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "targets": [
+        {
+          "alias": "CSS",
+          "datasource": {
+            "type": "influxdb",
+            "uid": "d710f057-8007-4a14-8372-a4f1f7c35f89"
+          },
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "null"
+              ],
+              "type": "fill"
+            }
+          ],
+          "measurement": "contentSize",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "A",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "category",
+              "operator": "=~",
+              "value": "/^$category$/"
+            },
+            {
+              "condition": "AND",
+              "key": "group",
+              "operator": "=~",
+              "value": "/^$group$/"
+            },
+            {
+              "condition": "AND",
+              "key": "page",
+              "operator": "=~",
+              "value": "/^$page$/"
+            },
+            {
+              "condition": "AND",
+              "key": "browser",
+              "operator": "=~",
+              "value": "/^$browser$/"
+            },
+            {
+              "condition": "AND",
+              "key": "connectivity",
+              "operator": "=~",
+              "value": "/^$connectivity$/"
+            },
+            {
+              "condition": "AND",
+              "key": "party",
+              "operator": "=",
+              "value": "thirdParty"
+            }
+          ]
+        },
+        {
+          "alias": "Fonts",
+          "datasource": {
+            "type": "influxdb",
+            "uid": "d710f057-8007-4a14-8372-a4f1f7c35f89"
+          },
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "null"
+              ],
+              "type": "fill"
+            }
+          ],
+          "hide": false,
+          "measurement": "contentSize",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "B",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "category",
+              "operator": "=~",
+              "value": "/^$category$/"
+            },
+            {
+              "condition": "AND",
+              "key": "group",
+              "operator": "=~",
+              "value": "/^$group$/"
+            },
+            {
+              "condition": "AND",
+              "key": "page",
+              "operator": "=~",
+              "value": "/^$page$/"
+            },
+            {
+              "condition": "AND",
+              "key": "browser",
+              "operator": "=~",
+              "value": "/^$browser$/"
+            },
+            {
+              "condition": "AND",
+              "key": "connectivity",
+              "operator": "=~",
+              "value": "/^$connectivity$/"
+            },
+            {
+              "condition": "AND",
+              "key": "contentType",
+              "operator": "=",
+              "value": "font"
+            },
+            {
+              "condition": "AND",
+              "key": "party",
+              "operator": "=",
+              "value": "thirdParty"
+            }
+          ]
+        },
+        {
+          "alias": "HTML",
+          "datasource": {
+            "type": "influxdb",
+            "uid": "d710f057-8007-4a14-8372-a4f1f7c35f89"
+          },
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "null"
+              ],
+              "type": "fill"
+            }
+          ],
+          "hide": false,
+          "measurement": "contentSize",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "C",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "category",
+              "operator": "=~",
+              "value": "/^$category$/"
+            },
+            {
+              "condition": "AND",
+              "key": "group",
+              "operator": "=~",
+              "value": "/^$group$/"
+            },
+            {
+              "condition": "AND",
+              "key": "page",
+              "operator": "=~",
+              "value": "/^$page$/"
+            },
+            {
+              "condition": "AND",
+              "key": "browser",
+              "operator": "=~",
+              "value": "/^$browser$/"
+            },
+            {
+              "condition": "AND",
+              "key": "connectivity",
+              "operator": "=~",
+              "value": "/^$connectivity$/"
+            },
+            {
+              "condition": "AND",
+              "key": "contentType",
+              "operator": "=",
+              "value": "html"
+            },
+            {
+              "condition": "AND",
+              "key": "party",
+              "operator": "=",
+              "value": "thirdParty"
+            }
+          ]
+        },
+        {
+          "alias": "Java Script ",
+          "datasource": {
+            "type": "influxdb",
+            "uid": "d710f057-8007-4a14-8372-a4f1f7c35f89"
+          },
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "null"
+              ],
+              "type": "fill"
+            }
+          ],
+          "hide": false,
+          "measurement": "contentSize",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "D",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "category",
+              "operator": "=~",
+              "value": "/^$category$/"
+            },
+            {
+              "condition": "AND",
+              "key": "group",
+              "operator": "=~",
+              "value": "/^$group$/"
+            },
+            {
+              "condition": "AND",
+              "key": "page",
+              "operator": "=~",
+              "value": "/^$page$/"
+            },
+            {
+              "condition": "AND",
+              "key": "browser",
+              "operator": "=~",
+              "value": "/^$browser$/"
+            },
+            {
+              "condition": "AND",
+              "key": "connectivity",
+              "operator": "=~",
+              "value": "/^$connectivity$/"
+            },
+            {
+              "condition": "AND",
+              "key": "contentType",
+              "operator": "=",
+              "value": "javascript"
+            },
+            {
+              "condition": "AND",
+              "key": "party",
+              "operator": "=",
+              "value": "thirdParty"
+            }
+          ]
+        },
+        {
+          "alias": "Images",
+          "datasource": {
+            "type": "influxdb",
+            "uid": "d710f057-8007-4a14-8372-a4f1f7c35f89"
+          },
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "null"
+              ],
+              "type": "fill"
+            }
+          ],
+          "hide": false,
+          "measurement": "contentSize",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "E",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "category",
+              "operator": "=~",
+              "value": "/^$category$/"
+            },
+            {
+              "condition": "AND",
+              "key": "group",
+              "operator": "=~",
+              "value": "/^$group$/"
+            },
+            {
+              "condition": "AND",
+              "key": "page",
+              "operator": "=~",
+              "value": "/^$page$/"
+            },
+            {
+              "condition": "AND",
+              "key": "browser",
+              "operator": "=~",
+              "value": "/^$browser$/"
+            },
+            {
+              "condition": "AND",
+              "key": "connectivity",
+              "operator": "=~",
+              "value": "/^$connectivity$/"
+            },
+            {
+              "condition": "AND",
+              "key": "contentType",
+              "operator": "=",
+              "value": "image"
+            },
+            {
+              "condition": "AND",
+              "key": "party",
+              "operator": "=",
+              "value": "thirdParty"
+            }
+          ]
+        }
+      ],
+      "title": "Content Sizes Third Party",
+      "type": "piechart"
+    },
+    {
+      "datasource": {
+        "type": "influxdb",
+        "uid": "d710f057-8007-4a14-8372-a4f1f7c35f89"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "fixedColor": "orange",
+            "mode": "fixed"
+          },
+          "custom": {
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 77,
+            "gradientMode": "opacity",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 2,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": true,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "decbytes"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 0,
+        "y": 21
+      },
+      "id": 110,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "targets": [
+        {
+          "alias": "Java Script",
+          "datasource": {
+            "type": "influxdb",
+            "uid": "d710f057-8007-4a14-8372-a4f1f7c35f89"
+          },
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "null"
+              ],
+              "type": "fill"
+            }
+          ],
+          "measurement": "contentSize",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "A",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "category",
+              "operator": "=~",
+              "value": "/^$category$/"
+            },
+            {
+              "condition": "AND",
+              "key": "group",
+              "operator": "=~",
+              "value": "/^$group$/"
+            },
+            {
+              "condition": "AND",
+              "key": "page",
+              "operator": "=~",
+              "value": "/^$page$/"
+            },
+            {
+              "condition": "AND",
+              "key": "browser",
+              "operator": "=~",
+              "value": "/^$browser$/"
+            },
+            {
+              "condition": "AND",
+              "key": "connectivity",
+              "operator": "=~",
+              "value": "/^$connectivity$/"
+            },
+            {
+              "condition": "AND",
+              "key": "contentType",
+              "operator": "=",
+              "value": "javascript"
+            },
+            {
+              "condition": "AND",
+              "key": "party",
+              "operator": "=",
+              "value": "firstParty"
+            }
+          ]
+        }
+      ],
+      "title": "JavaScript Content Sizes First Party",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "influxdb",
+        "uid": "d710f057-8007-4a14-8372-a4f1f7c35f89"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "fixedColor": "orange",
+            "mode": "fixed"
+          },
+          "custom": {
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 77,
+            "gradientMode": "opacity",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 2,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": true,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "decbytes"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 12,
+        "y": 21
+      },
+      "id": 111,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "targets": [
+        {
+          "alias": "Java Script",
+          "datasource": {
+            "type": "influxdb",
+            "uid": "d710f057-8007-4a14-8372-a4f1f7c35f89"
+          },
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "null"
+              ],
+              "type": "fill"
+            }
+          ],
+          "measurement": "contentSize",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "A",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "category",
+              "operator": "=~",
+              "value": "/^$category$/"
+            },
+            {
+              "condition": "AND",
+              "key": "group",
+              "operator": "=~",
+              "value": "/^$group$/"
+            },
+            {
+              "condition": "AND",
+              "key": "page",
+              "operator": "=~",
+              "value": "/^$page$/"
+            },
+            {
+              "condition": "AND",
+              "key": "browser",
+              "operator": "=~",
+              "value": "/^$browser$/"
+            },
+            {
+              "condition": "AND",
+              "key": "connectivity",
+              "operator": "=~",
+              "value": "/^$connectivity$/"
+            },
+            {
+              "condition": "AND",
+              "key": "contentType",
+              "operator": "=",
+              "value": "javascript"
+            },
+            {
+              "condition": "AND",
+              "key": "party",
+              "operator": "=",
+              "value": "thirdParty"
+            }
+          ]
+        }
+      ],
+      "title": "JavaScript Content Sizes Third Party",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "influxdb",
+        "uid": "d710f057-8007-4a14-8372-a4f1f7c35f89"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "fixedColor": "green",
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "align": "left",
+            "cellOptions": {
+              "mode": "gradient",
+              "type": "color-background"
+            },
+            "filterable": false,
+            "inspect": false
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green"
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "massg"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 13,
+        "w": 24,
+        "x": 0,
+        "y": 29
+      },
+      "id": 112,
+      "options": {
+        "cellHeight": "sm",
+        "footer": {
+          "countRows": false,
+          "enablePagination": true,
+          "fields": [
+            "last"
+          ],
+          "reducer": [
+            "sum"
+          ],
+          "show": false
+        },
+        "showHeader": true
+      },
+      "pluginVersion": "10.0.2",
+      "targets": [
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "d710f057-8007-4a14-8372-a4f1f7c35f89"
+          },
+          "groupBy": [
+            {
+              "params": [
+                "page::tag"
+              ],
+              "type": "tag"
+            }
+          ],
+          "measurement": "co2PerPageView",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "query": "SELECT last(\"p90\") FROM \"autogen\".\"co2PerPageView\" WHERE (\"page\" =~ /.*/) AND $timeFilter GROUP BY \"page\"::tag ORDER BY time DESC",
+          "rawQuery": false,
+          "refId": "A",
+          "resultFormat": "table",
+          "select": [
+            [
+              {
+                "params": [
+                  "p90"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "last"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "page",
+              "operator": "=~",
+              "value": "/.*/"
+            }
+          ]
+        }
+      ],
+      "title": "CO2 per URL (Table last)",
+      "transformations": [
+        {
+          "id": "filterByValue",
+          "options": {
+            "filters": [
+              {
+                "config": {
+                  "id": "equal",
+                  "options": {
+                    "value": "_search__7Bsearch_term_string_7D_"
+                  }
+                },
+                "fieldName": "page"
+              }
+            ],
+            "match": "any",
+            "type": "exclude"
+          }
+        },
+        {
+          "id": "sortBy",
+          "options": {
+            "fields": {},
+            "sort": [
+              {
+                "desc": true,
+                "field": "last"
+              }
+            ]
+          }
+        }
+      ],
+      "transparent": true,
+      "type": "table"
+    },
+    {
+      "datasource": {
+        "type": "influxdb",
+        "uid": "d710f057-8007-4a14-8372-a4f1f7c35f89"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 9,
+            "gradientMode": "opacity",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "always",
+            "spanNulls": true,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green"
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "massg"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 12,
+        "w": 24,
+        "x": 0,
+        "y": 42
+      },
+      "id": 113,
+      "options": {
+        "legend": {
+          "calcs": [
+            "lastNotNull",
+            "max",
+            "min"
+          ],
+          "displayMode": "table",
+          "placement": "right",
+          "showLegend": true
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "targets": [
+        {
+          "alias": "360° Panoramabilder",
+          "datasource": {
+            "type": "influxdb",
+            "uid": "d710f057-8007-4a14-8372-a4f1f7c35f89"
+          },
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "null"
+              ],
+              "type": "fill"
+            }
+          ],
+          "measurement": "co2PerPageView",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "A",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "median"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "last"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "page",
+              "operator": "=",
+              "value": "_360-grad-panoramabilder_"
+            }
+          ]
+        },
+        {
+          "alias": "Anreise",
+          "datasource": {
+            "type": "influxdb",
+            "uid": "d710f057-8007-4a14-8372-a4f1f7c35f89"
+          },
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "null"
+              ],
+              "type": "fill"
+            }
+          ],
+          "hide": false,
+          "measurement": "co2PerPageView",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "B",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "median"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "last"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "page",
+              "operator": "=",
+              "value": "_anreise_"
+            }
+          ]
+        },
+        {
+          "alias": "Bestuhlungspläne",
+          "datasource": {
+            "type": "influxdb",
+            "uid": "d710f057-8007-4a14-8372-a4f1f7c35f89"
+          },
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "null"
+              ],
+              "type": "fill"
+            }
+          ],
+          "hide": false,
+          "measurement": "co2PerPageView",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "C",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "median"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "last"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "page",
+              "operator": "=",
+              "value": "_bestuhlungsplaene_"
+            }
+          ]
+        },
+        {
+          "alias": "Datenschutzerklärung",
+          "datasource": {
+            "type": "influxdb",
+            "uid": "d710f057-8007-4a14-8372-a4f1f7c35f89"
+          },
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "null"
+              ],
+              "type": "fill"
+            }
+          ],
+          "hide": false,
+          "measurement": "co2PerPageView",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "D",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "median"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "last"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "page",
+              "operator": "=",
+              "value": "_datenschutzerklaerung_"
+            }
+          ]
+        },
+        {
+          "alias": "Gastronomie",
+          "datasource": {
+            "type": "influxdb",
+            "uid": "d710f057-8007-4a14-8372-a4f1f7c35f89"
+          },
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "null"
+              ],
+              "type": "fill"
+            }
+          ],
+          "hide": false,
+          "measurement": "co2PerPageView",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "E",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "median"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "last"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "page",
+              "operator": "=",
+              "value": "_gastronomie_"
+            }
+          ]
+        },
+        {
+          "alias": "Impressum",
+          "datasource": {
+            "type": "influxdb",
+            "uid": "d710f057-8007-4a14-8372-a4f1f7c35f89"
+          },
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "null"
+              ],
+              "type": "fill"
+            }
+          ],
+          "hide": false,
+          "measurement": "co2PerPageView",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "F",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "median"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "last"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "page",
+              "operator": "=",
+              "value": "_impressum_"
+            }
+          ]
+        },
+        {
+          "alias": "Kontakt",
+          "datasource": {
+            "type": "influxdb",
+            "uid": "d710f057-8007-4a14-8372-a4f1f7c35f89"
+          },
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "null"
+              ],
+              "type": "fill"
+            }
+          ],
+          "hide": false,
+          "measurement": "co2PerPageView",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "G",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "median"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "last"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "page",
+              "operator": "=",
+              "value": "_kontakt_"
+            }
+          ]
+        },
+        {
+          "alias": "Preisliste",
+          "datasource": {
+            "type": "influxdb",
+            "uid": "d710f057-8007-4a14-8372-a4f1f7c35f89"
+          },
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "null"
+              ],
+              "type": "fill"
+            }
+          ],
+          "hide": false,
+          "measurement": "co2PerPageView",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "H",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "median"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "last"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "page",
+              "operator": "=",
+              "value": "_preisliste_"
+            }
+          ]
+        },
+        {
+          "alias": "Raumangebot",
+          "datasource": {
+            "type": "influxdb",
+            "uid": "d710f057-8007-4a14-8372-a4f1f7c35f89"
+          },
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "null"
+              ],
+              "type": "fill"
+            }
+          ],
+          "hide": false,
+          "measurement": "co2PerPageView",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "I",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "median"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "last"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "page",
+              "operator": "=",
+              "value": "_raumangebot_"
+            }
+          ]
+        },
+        {
+          "alias": "Theater Preise",
+          "datasource": {
+            "type": "influxdb",
+            "uid": "d710f057-8007-4a14-8372-a4f1f7c35f89"
+          },
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "null"
+              ],
+              "type": "fill"
+            }
+          ],
+          "hide": false,
+          "measurement": "co2PerPageView",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "J",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "median"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "last"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "page",
+              "operator": "=",
+              "value": "_theater-preise_"
+            }
+          ]
+        },
+        {
+          "alias": "Theater",
+          "datasource": {
+            "type": "influxdb",
+            "uid": "d710f057-8007-4a14-8372-a4f1f7c35f89"
+          },
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "null"
+              ],
+              "type": "fill"
+            }
+          ],
+          "hide": false,
+          "measurement": "co2PerPageView",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "K",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "median"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "last"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "page",
+              "operator": "=",
+              "value": "_theater_"
+            }
+          ]
+        },
+        {
+          "alias": "Veranstaltungen",
+          "datasource": {
+            "type": "influxdb",
+            "uid": "d710f057-8007-4a14-8372-a4f1f7c35f89"
+          },
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "null"
+              ],
+              "type": "fill"
+            }
+          ],
+          "hide": false,
+          "measurement": "co2PerPageView",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "L",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "median"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "last"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "page",
+              "operator": "=",
+              "value": "_veranstaltungen_"
+            }
+          ]
+        },
+        {
+          "alias": "Startseite",
+          "datasource": {
+            "type": "influxdb",
+            "uid": "d710f057-8007-4a14-8372-a4f1f7c35f89"
+          },
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "null"
+              ],
+              "type": "fill"
+            }
+          ],
+          "hide": false,
+          "measurement": "co2PerPageView",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "M",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "median"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "last"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "page",
+              "operator": "=",
+              "value": "_"
+            }
+          ]
+        }
+      ],
+      "title": "CO2 Usage per URL as Time series",
+      "type": "timeseries"
+    }
+  ],
+  "refresh": "",
+  "revision": 1,
+  "schemaVersion": 38,
+  "style": "dark",
+  "tags": [],
+  "templating": {
+    "list": [
+      {
+        "current": {
+          "selected": false,
+          "text": "default",
+          "value": "default"
+        },
+        "datasource": {
+          "type": "influxdb",
+          "uid": "d710f057-8007-4a14-8372-a4f1f7c35f89"
+        },
+        "definition": "",
+        "hide": 0,
+        "includeAll": false,
+        "multi": false,
+        "name": "category",
+        "options": [],
+        "query": "SHOW TAG VALUES WITH KEY = \"category\"",
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 0,
+        "tagValuesQuery": "",
+        "tagsQuery": "",
+        "type": "query",
+        "useTags": false
+      },
+      {
+        "current": {
+          "selected": false,
+          "text": "Proposal_de",
+          "value": "Proposal_de"
+        },
+        "datasource": {
+          "type": "influxdb",
+          "uid": "d710f057-8007-4a14-8372-a4f1f7c35f89"
+        },
+        "definition": "",
+        "hide": 0,
+        "includeAll": false,
+        "label": "group",
+        "multi": false,
+        "name": "group",
+        "options": [],
+        "query": "SHOW TAG VALUES WITH KEY = \"group\" WHERE \"category\" =~ /$category/",
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 0,
+        "tagValuesQuery": "",
+        "tagsQuery": "",
+        "type": "query",
+        "useTags": false
+      },
+      {
+        "current": {
+          "selected": false,
+          "text": "_",
+          "value": "_"
+        },
+        "datasource": {
+          "type": "influxdb",
+          "uid": "d710f057-8007-4a14-8372-a4f1f7c35f89"
+        },
+        "definition": "",
+        "hide": 0,
+        "includeAll": false,
+        "multi": false,
+        "name": "page",
+        "options": [],
+        "query": "SHOW TAG VALUES WITH KEY = \"page\" WHERE \"group\" =~ /$group/ AND \"category\" =~ /$category/",
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 0,
+        "tagValuesQuery": "",
+        "tagsQuery": "",
+        "type": "query",
+        "useTags": false
+      },
+      {
+        "current": {
+          "selected": false,
+          "text": "chrome",
+          "value": "chrome"
+        },
+        "datasource": {
+          "type": "influxdb",
+          "uid": "d710f057-8007-4a14-8372-a4f1f7c35f89"
+        },
+        "definition": "",
+        "hide": 0,
+        "includeAll": false,
+        "multi": false,
+        "name": "browser",
+        "options": [],
+        "query": "SHOW TAG VALUES WITH KEY = \"browser\" WHERE \"group\" =~ /$group/ AND \"page\"  =~ /$page/ AND \"category\" =~ /$category/",
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 0,
+        "tagValuesQuery": "",
+        "tagsQuery": "",
+        "type": "query",
+        "useTags": false
+      },
+      {
+        "current": {
+          "selected": false,
+          "text": "cable",
+          "value": "cable"
+        },
+        "datasource": {
+          "type": "influxdb",
+          "uid": "d710f057-8007-4a14-8372-a4f1f7c35f89"
+        },
+        "definition": "",
+        "hide": 0,
+        "includeAll": false,
+        "multi": false,
+        "name": "connectivity",
+        "options": [],
+        "query": "SHOW TAG VALUES WITH KEY = \"connectivity\" WHERE \"group\" =~ /$group/ AND \"page\"  =~ /$page/ AND \"browser\" =~ /$browser/ AND \"category\" =~ /$category/",
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 0,
+        "tagValuesQuery": "",
+        "tagsQuery": "",
+        "type": "query",
+        "useTags": false
+      },
+      {
+        "current": {
+          "isNone": true,
+          "selected": false,
+          "text": "None",
+          "value": ""
+        },
+        "datasource": {
+          "type": "influxdb",
+          "uid": "ByH7J6LVz"
+        },
+        "definition": "",
+        "hide": 0,
+        "includeAll": false,
+        "multi": false,
+        "name": "query0",
+        "options": [],
+        "query": "",
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 0,
+        "type": "query"
+      },
+      {
+        "current": {
+          "isNone": true,
+          "selected": false,
+          "text": "None",
+          "value": ""
+        },
+        "datasource": {
+          "type": "influxdb",
+          "uid": "ByH7J6LVz"
+        },
+        "definition": "",
+        "hide": 0,
+        "includeAll": false,
+        "multi": false,
+        "name": "query1",
+        "options": [],
+        "query": "",
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 0,
+        "type": "query"
+      }
+    ]
+  },
+  "time": {
+    "from": "now-2d",
+    "to": "now"
+  },
+  "timepicker": {
+    "refresh_intervals": [
+      "5m",
+      "15m",
+      "30m",
+      "1h",
+      "2h",
+      "1d"
+    ],
+    "time_options": [
+      "5m",
+      "15m",
+      "1h",
+      "6h",
+      "12h",
+      "24h",
+      "2d",
+      "7d",
+      "30d"
+    ]
+  },
+  "timezone": "Europe/Berlin",
+  "title": "Proposal GrafanaBoard",
+  "uid": "000000056",
+  "version": 28,
+  "weekStart": "monday"
+}
